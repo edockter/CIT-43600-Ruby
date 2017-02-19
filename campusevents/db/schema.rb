@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206045532) do
+ActiveRecord::Schema.define(version: 20170214012854) do
+
+  create_table "attendees", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +28,11 @@ ActiveRecord::Schema.define(version: 20170206045532) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events_sponsors", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "sponsor_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -39,6 +52,8 @@ ActiveRecord::Schema.define(version: 20170206045532) do
     t.datetime "end_time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "event_id"
+    t.integer  "location_id"
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -47,6 +62,13 @@ ActiveRecord::Schema.define(version: 20170206045532) do
     t.string   "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "attendee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
