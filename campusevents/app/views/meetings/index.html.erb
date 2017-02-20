@@ -2,14 +2,15 @@
 
 <h1>Listing Meetings</h1>
 
-<table>
+<table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Location</th>
       <th>Start time</th>
       <th>End time</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -18,11 +19,18 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.description %></td>
+        <td>
+          <% if meeting.location.present? %>
+            <%= meeting.location.name %>
+          <% else %>
+            <%= "None" %>
+          <% end %>
+        </td>
         <td><%= meeting.start_time %></td>
         <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center"><%= link_to 'Show', meeting, :class => "btn btn-info" %></td>
+        <td class="text-center"><%= link_to 'Edit', edit_meeting_path(meeting), :class => "btn btn-warning" %></td>
+        <td class="text-center"><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Meeting', new_meeting_path %>
+<%= link_to 'New Meeting', new_meeting_path, :class => "btn btn-lg btn-primary" %>

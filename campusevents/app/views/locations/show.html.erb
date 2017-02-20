@@ -25,5 +25,33 @@
   <%= @location.map_url %>
 </p>
 
+<br/>
+
+<h4>Next 5 Meetings here</h4>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @location.meetings.take(5).each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.location.name %></td>
+        <td><%= meeting.start_time %></td>
+        <td><%= meeting.end_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+<br/>
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

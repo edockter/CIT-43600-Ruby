@@ -20,5 +20,52 @@
   <%= @event.url %>
 </p>
 
+<p>
+  <strong>Sponsors:</strong>
+  <br/>
+  <% Sponsor.all.each do |sponsor| %>              
+    <% if @event.sponsors.include?(sponsor)%>
+      <%= sponsor.name %>
+        <% if @event.sponsors.count > 1 %>
+         <br/>
+        <% end %>
+    <% end %>
+  <% end %>
+</p>
+
+<br/>
+
+<h4>Meetings for this Event</h4>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td>
+          <% if meeting.location.present? %>
+            <%= meeting.location.name %>
+          <% else %>
+            <%= "None" %>
+          <% end %>
+        </td>
+        <td><%= meeting.start_time %></td>
+        <td><%= meeting.end_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+<br/>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

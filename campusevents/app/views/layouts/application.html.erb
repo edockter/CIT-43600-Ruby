@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Campus Events", { controller: "events", action: "index" }, class: "navbar-brand text-white" %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Attendees", attendees_path %></li>
+      <li><%= link_to "Events", events_path %></li>
+      <li><%= link_to "Locations", locations_path %></li>
+      <li><%= link_to "Meetings", meetings_path %></li>
+      <li><%= link_to "Sponsors", sponsors_path %></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <%= yield %>
+  </div> 
+</div>
 
 </body>
 </html>

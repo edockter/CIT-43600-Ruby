@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<h1 class="">Listing Events</h1>
 
-<table>
+<table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
+      <th>Sponsors</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Url</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -17,12 +18,22 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
+        <td>
+            <% Sponsor.all.each do |sponsor| %>              
+              <% if event.sponsors.include?(sponsor)%>
+                <%= sponsor.name %>
+                <% if event.sponsors.count > 1 %>
+                  <br />
+                <% end %>
+              <% end %>
+            <% end %>
+        </td>
         <td><%= event.start_date %></td>
         <td><%= event.end_date %></td>
         <td><%= event.url %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center"><%= link_to 'Show', event, :class => "btn btn-info" %></td>
+        <td class="text-center"><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-warning" %></td>
+        <td class="text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +41,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path, :class => "btn btn-lg btn-primary" %>

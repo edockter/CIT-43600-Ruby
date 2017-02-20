@@ -27,7 +27,16 @@
     <%= f.label :end_time %><br>
     <%= f.datetime_select :end_time %>
   </div>
+  <div class="locations">
+    <%= f.label :location_id %><br/>
+    <%= f.collection_select :location_id, Location.all.collect, :id, :name, { :include_blank => "Meeting Location" } %>
+  </div>
+  <div class="events">
+    <%= f.label :event_id %><br/>
+    <%= f.collection_select :event_id, Event.all.collect, :id, :name %>
+  </div>
+  <br/><br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", :class => "btn btn-lg btn-primary" %>
   </div>
 <% end %>
