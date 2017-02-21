@@ -35,8 +35,8 @@
     <%= f.label :event_id %><br/>
     <%= f.collection_select :event_id, Event.all.collect, :id, :name %>
   </div>
-  <br/><br/>
+  
   <div class="actions">
-    <%= f.submit "Update", :class => "btn btn-lg btn-primary" %>
+    <%= f.submit :class => "btn btn-lg btn-primary" %>
   </div>
 <% end %>

@@ -27,7 +27,7 @@
 
 <br/>
 
-<h4>Next 5 Meetings here</h4>
+<h4>Next 5 Meetings Here</h4>
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
@@ -51,7 +51,7 @@
 </table>
 
 <br/>
-<br/>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<div class="btn-group">
+  <%= link_to 'Edit', edit_location_path(@location), :class => "btn text-white btn-info" %>
+  <%= link_to 'Back', locations_path, :class => "btn text-white btn-danger" %>
+</div>

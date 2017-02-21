@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
     has_many :attendees, :through => :subscriptions
 
 
+
     def start_is_before_end
         if end_date < start_date
             errors.add :end_date, "- event must start before it can end."

@@ -20,5 +20,8 @@
   <%= @meeting.end_time %>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<br/>
+<div class="btn-group">
+  <%= link_to 'Edit', edit_meeting_path(@meeting), :class => "btn text-white btn-info" %>
+  <%= link_to 'Back', meetings_path, :class => "btn text-white btn-danger" %>
+</div>

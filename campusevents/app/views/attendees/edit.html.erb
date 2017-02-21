@@ -1,6 +1,8 @@
 <h1>Editing Attendee</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @attendee %> |
-<%= link_to 'Back', attendees_path %>
+<br/>
+<div class="btn-group">
+    <%= link_to 'Show', @attendee, :class => "btn text-white btn-info" %>
+    <%= link_to 'Back', attendees_path, :class => "btn text-white btn-danger" %>
+</div>

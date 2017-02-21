@@ -28,12 +28,13 @@
     <%= f.text_field :url %>
   </div>
   <div class="field">
+    <%= f.label :sponsor_id %><br>
     <% Sponsor.all.each do |sponsor| %>
       <%= check_box_tag "event[sponsor_ids][]", sponsor.id, @event.sponsors.include?(sponsor) %>
       <%= sponsor.name %>
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-lg btn-primary" %>
   </div>
 <% end %>
