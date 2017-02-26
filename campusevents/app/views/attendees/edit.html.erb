@@ -1,4 +1,10 @@
-<h1>Editing Attendee</h1>
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @attendee.full_name %></i>
+<% end %>
+
+<% content_for(:sidebar) do %>
+    
+<% end %>
 
 <%= render 'form' %>
 <br/>

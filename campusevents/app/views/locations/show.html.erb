@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+  <% content_for(:pagetitle) do %>
+    "<%= @location.name %>" Details
+  <% end %>
+
+  <% content_for(:sidebar) do %>
+    <%= render "next_5_meetings" %>
+  <% end %>
+
 <p>
   <strong>Name:</strong>
   <%= @location.name %>
@@ -26,29 +34,6 @@
 </p>
 
 <br/>
-
-<h4>Next 5 Meetings Here</h4>
-<table class="table table-bordered table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Start time</th>
-      <th>End time</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @location.meetings.take(5).each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td><%= meeting.location.name %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br/>
 <div class="btn-group">

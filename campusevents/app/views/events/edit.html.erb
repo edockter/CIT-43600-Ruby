@@ -1,4 +1,10 @@
-<h1>Editing Event</h1>
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @event.name %></i>
+<% end %>
+
+<% content_for(:sidebar) do %>
+    <%= render "sponsor_list" %>
+<% end %>
 
 <%= render 'form' %>
 <br/>

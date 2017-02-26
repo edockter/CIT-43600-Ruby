@@ -1,4 +1,10 @@
-<h1>Editing Location</h1>
+  <% content_for(:pagetitle) do %>
+    Editing <i><%= @location.name %></i>
+  <% end %>
+
+  <% content_for(:sidebar) do %>
+    <%= render "next_5_meetings" %>
+  <% end %>
 
 <%= render 'form' %>
 <br/>

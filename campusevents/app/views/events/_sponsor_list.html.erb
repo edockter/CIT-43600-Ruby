@@ -1,0 +1,6 @@
+<h3><%= pluralize(@event.sponsors.count, "sponsor")%> for this Event:</h3>
+<ul>
+<% @event.sponsors.each do |sponsor| %>
+    <li><%= link_to sponsor.name, sponsor %></li>
+<% end %>
+</ul>
