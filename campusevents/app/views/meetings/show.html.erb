@@ -5,9 +5,9 @@
   <% end %>
 
   <% content_for(:sidebar) do %>
-    <h3>Meeting location:</h3>
+    <h3>Meeting Location:</h3>
     <ul>
-      <li><%= @meeting.location.name %></li>
+      <li><%= link_to @meeting.location.name, @meeting.location %></li>
   <% end %>
 <p>
   <strong>Name:</strong>
