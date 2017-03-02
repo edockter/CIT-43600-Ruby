@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Passenger process IDs
+passenger.*.pid
