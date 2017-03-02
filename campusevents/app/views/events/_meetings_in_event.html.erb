@@ -12,7 +12,7 @@
   <tbody>
     <% @event.meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.name %></td>
+        <td><%= link_to meeting.name, meeting %></td>
         <td>
           <% if meeting.location.present? %>
             <%= meeting.location.name %>
@@ -20,8 +20,8 @@
             <%= "None" %>
           <% end %>
         </td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
+        <td><%= meeting.start_time.strftime('%b. %e, %l:%M%p') %></td>
+        <td><%= meeting.end_time.strftime('%b. %e, %l:%M%p') %></td>
       </tr>
     <% end %>
   </tbody>

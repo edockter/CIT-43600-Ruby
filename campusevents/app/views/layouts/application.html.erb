@@ -3,7 +3,7 @@
 <head>
   <title>Campus Events Manager</title>
   <!-- Put Google Fonts CDN with our the other stylesheets -->
-  <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Lato" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -32,21 +32,24 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+<div class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <h1><%= yield :pagetitle %></h1>
-      </div>
+        <div class="col-lg-10">            
+            <h1><%= yield :pagetitle %><small><%= yield :pagebuttons %></small></h1>
+            
+        </div>        
+        <div class="clearfix"></div>
     </div>
+
     <div class="row">
-      <div class="col-lg-8">
-        <%= yield :layout %>
-      </div>
-      <div class="col-lg-4">
-        <%= yield :sidebar %>
-      </div>
+        <div class="col-lg-8">
+            <%= yield :layout %>
+        </div>
+        <div class="col-lg-4">
+            <%= yield :sidebar %>
+        </div>
     </div> 
-  </div>
+</div>
 
 </body>
 </html>

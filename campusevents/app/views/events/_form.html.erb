@@ -10,31 +10,40 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :sponsor_id %><br>
-    <% Sponsor.all.each do |sponsor| %>
-      <%= check_box_tag "event[sponsor_ids][]", sponsor.id, @event.sponsors.include?(sponsor) %>
-      <%= sponsor.name %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit :class => "btn btn-lg btn-primary" %>
-  </div>
+    <div class="row">
+        <div class="col-lg-4 m-l-15">
+            <div class="field form-group row">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, :class => "form-control" %>
+            </div>
+            <div class="field form-group row">
+                <%= f.label :start_date %><br>
+                <%= f.text_field :start_date, :class => "form-control", 'data-provide' => 'datepicker' %>
+            </div>
+            <div class="field form-group row">
+                <%= f.label :end_date %><br>
+                <%= f.text_field :end_date, :class => "form-control", 'data-provide' => 'datepicker' %>
+            </div>
+            <div class="field form-group row">
+                <%= f.label :url %><br>
+                <%= f.text_field :url, :class => "form-control" %>
+            </div>
+            <div class="field form-group row">
+                <%= f.label :sponsor_id %><br>
+                <% Sponsor.all.each do |sponsor| %>
+                <%= check_box_tag "event[sponsor_ids][]", sponsor.id, @event.sponsors.include?(sponsor) %>
+                <%= sponsor.name %>
+                <br/>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="actions text-center">
+                <%= f.submit :class => "btn btn-lg btn-success" %>
+            </div>
+        </div>  
+    </div>
 <% end %>
