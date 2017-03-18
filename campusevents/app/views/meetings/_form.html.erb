@@ -10,33 +10,52 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
-  </div>
-  <div class="locations">
-    <%= f.label :location_id %><br/>
-    <%= f.collection_select :location_id, Location.all.collect, :id, :name, { :include_blank => "Meeting Location" } %>
-  </div>
-  <div class="events">
-    <%= f.label :event_id %><br/>
-    <%= f.collection_select :event_id, Event.all.collect, :id, :name %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit :class => "btn btn-lg btn-primary" %>
-  </div>
+    <div class="row">
+        <div class="col-lg-12 m-l-15">
+            <div class="field form-group row">
+                <div class="col-lg-5">
+                    <%= f.label :name %><br>
+                    <%= f.text_field :name, :class => "form-control" %>
+                </div>
+            </div>
+            <div class="field form-group row">
+                <div class="col-lg-5">
+                    <%= f.label :description  %><br>
+                    <%= f.text_field :description, :class => "form-control" %>
+                </div>
+            </div>            
+            <div class="field form-group row">
+                <div class="col-lg-12">
+                    <%= f.label :start_time %><br>
+                    <%= f.datetime_select :start_time, {}, :class => "form-control-nosize" %>
+                </div>
+            </div>
+            <div class="field form-group row">
+                <div class="col-lg-12">
+                    <%= f.label :end_time %><br>
+                    <%= f.datetime_select :end_time, {}, {:class => "form-control-nosize"} %>
+                </div>
+            </div>
+            <div class="field form-group row">
+                <div class="col-lg-5">
+                    <%= f.label :location_id %><br/>
+                    <%= f.collection_select :location_id, Location.all.collect, :id, :name, { :include_blank => "Meeting Location" }, :class => "form-control" %>
+                </div>
+            </div>
+            <div class="field form-group row">
+                <div class="col-lg-5">
+                    <%= f.label :event_id %><br/>
+                    <%= f.collection_select :event_id, Event.all.collect, :id, :name, {}, :class => "form-control" %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="actions text-center">
+                <%= f.submit :class => "btn btn-lg btn-success" %>
+            </div>
+        </div>  
+    </div>
 <% end %>

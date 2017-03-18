@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Campusevents</title>
+  <title>Campus Events Manager</title>
+  <!-- Put Google Fonts CDN with our the other stylesheets -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Lato" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top bg-primary">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -16,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Campus Events", :root, :class => "navbar-brand text-white" %>
+        <%= link_to "Campus Events", :root, :class => "navbar-brand active text-white" %>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -30,21 +32,22 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+<div class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <h1><%= yield :pagetitle %><small><%= yield :pagebuttons %></small></h1>
-      </div>
+        <div class="col-lg-10">            
+            <h1><%= yield :pagetitle %><small><%= yield :pagebuttons %></small></h1>            
+        </div>        
+        <div class="clearfix"></div>
     </div>
     <div class="row">
-      <div class="col-lg-8">
-        <%= yield :layout %>
-      </div>
-      <div class="col-lg-4">
-        <%= yield :sidebar %>
-      </div>
-    </div>
-  </div>
+        <div class="col-lg-8">
+            <%= yield :layout %>
+        </div>
+        <div class="col-lg-4">
+            <%= yield :sidebar %>
+        </div>
+    </div> 
+</div>
 
 </body>
 </html>

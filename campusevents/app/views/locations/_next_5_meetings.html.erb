@@ -1,4 +1,4 @@
-<h4>Next 5 Meetings Here</h4>
+<h3>Next 5 Meetings Here:</h3>
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
@@ -12,8 +12,8 @@
     <% @location.meetings.take(5).each do |meeting| %>
       <tr>
         <td><%= link_to(meeting.name, meeting)%></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
+        <td><%= meeting.start_time.strftime('%b. %e, %l:%M%p') %></td>
+        <td><%= meeting.end_time.strftime('%b. %e, %l:%M%p') %></td>
       </tr>
     <% end %>
   </tbody>

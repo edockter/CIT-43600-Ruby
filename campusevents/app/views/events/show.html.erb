@@ -1,79 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-  <% content_for(:pagetitle) do %>
+<% content_for(:pagetitle) do %>
     "<%= @event.name %>" Details
-  <% end %>
+<% end %>
 
-  <% content_for(:sidebar) do %>
+<% content_for(:pagebuttons) do %>
+    <div class="btn-group" style="margin-left: 2%; margin-bottom: 1%;">
+        <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-sm btn-info" %>
+        <%= link_to 'Back', events_path, :class => "btn btn-sm btn-warning" %>
+    </div>
+<% end %>
+
+<% content_for(:sidebar) do %>
     <%= render "sponsor_list" %>
-  <% end %>
+    <br/>
+    <%= render "meetings_in_event" %>
+<% end %>
 
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
+    <strong>Name:</strong>
+    <%= @event.name %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
+    <strong>Start date:</strong>
+    <%= @event.start_date %>
 </p>
 
 <p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
+    <strong>End date:</strong>
+    <%= @event.end_date %>
 </p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @event.url %>
+    <strong>Url:</strong>
+    <%= @event.url %>
 </p>
 
 <p>
-  <strong>Sponsors:</strong>
-  <br/>
-  <% Sponsor.all.each do |sponsor| %>              
-    <% if @event.sponsors.include?(sponsor)%>
-      <%= sponsor.name %>
-        <% if @event.sponsors.count > 1 %>
-         <br/>
+    <strong>Sponsors:</strong>
+    <br/>
+    <% Sponsor.all.each do |sponsor| %>              
+        <% if @event.sponsors.include?(sponsor)%>
+        <%= sponsor.name %>
+            <% if @event.sponsors.count > 1 %>
+            <br/>
+            <% end %>
         <% end %>
     <% end %>
-  <% end %>
 </p>
-
-<br/>
-
-<h4>Meetings for this Event</h4>
-<table class="table table-bordered table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Start time</th>
-      <th>End time</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @event.meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td>
-          <% if meeting.location.present? %>
-            <%= meeting.location.name %>
-          <% else %>
-            <%= "None" %>
-          <% end %>
-        </td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br/>
-<div class="btn-group">
-  <%= link_to 'Edit', edit_event_path(@event), :class => "btn text-white btn-info" %>
-  <%= link_to 'Back', events_path, :class => "btn text-white btn-danger" %>
-</div>

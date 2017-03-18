@@ -1,0 +1,28 @@
+<h3><%= pluralize(@event.meetings.count, "meeting")%> for this Event:</h3>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.meetings.each do |meeting| %>
+      <tr>
+        <td><%= link_to meeting.name, meeting %></td>
+        <td>
+          <% if meeting.location.present? %>
+            <%= meeting.location.name %>
+          <% else %>
+            <%= "None" %>
+          <% end %>
+        </td>
+        <td><%= meeting.start_time.strftime('%b. %e, %l:%M%p') %></td>
+        <td><%= meeting.end_time.strftime('%b. %e, %l:%M%p') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
