@@ -1,0 +1,11 @@
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @category.label %></i>
+<% end %>
+<%= render 'form' %>
+<br/>
+<% content_for(:pagebuttons) do %>
+  <div class="btn-group" style="margin-left: 2%; margin-bottom: 1%;">
+      <%= link_to 'Show', @category, :class => "btn btn-sm btn-info" %>
+      <%= link_to 'Back', categories_path, :class => "btn btn-sm btn-warning" %>
+  </div>
+<% end %>
