@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @country.name %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Total</th>
+        <th>Females</th>
+        <th>Males</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @countryDetails.each do |year| %>
+      <tr>
+        <td><%= year['age'] %></td>
+        <td><%= year['total'] %></td>
+        <td><%= year['females'] %></td>
+        <td><%= year['males'] %></td>
+  <% end %>
+</p>
+
+<%= link_to 'Back', countries_path %>
