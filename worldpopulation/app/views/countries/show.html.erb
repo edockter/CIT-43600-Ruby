@@ -1,26 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @country.name %>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Age</th>
-        <th>Total</th>
-        <th>Females</th>
-        <th>Males</th>
-      </tr>
-    </thead>
-    <tbody>
-  <% @countryDetails.each do |year| %>
-      <tr>
-        <td><%= year['age'] %></td>
-        <td><%= year['total'] %></td>
-        <td><%= year['females'] %></td>
-        <td><%= year['males'] %></td>
-  <% end %>
-</p>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+    <h1><%= @country.name %><small class="pull-right" style="margin-bottom: 1%; margin-top: 1%;"><%= link_to 'Back', countries_path, :class => "btn btn-info" %></small></h1>
+  </div>
+</div>
 
-<%= link_to 'Back', countries_path %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Age</th>
+          <th class="text-center">Total Population</th>
+          <th class="text-center">Female Population</th>
+          <th class="text-center">Percentage</th>
+          <th class="text-center">Male Population</th>
+          <th class="text-center">Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @countryDetails.each do |year| %>
+          <tr>
+            <td class="text-center"><strong><%= year['age'] %></strong></td>
+            <% femalePercentage = year['females'].to_f / year['total'].to_f * 100 %>
+            <% malePercentage = year['males'].to_f / year['total'].to_f * 100 %>
+            <td class="text-center"><%= number_with_delimiter(year['total'], :delimiter => ',') %></td>
+            <td class="text-center"><%= number_with_delimiter(year['females'], :delimiter => ',') %></td>
+            <td class="text-center"><%= number_with_precision(femalePercentage, :precision => 2) %>%</td>
+            <td class="text-center"><%= number_with_delimiter(year['males'], :delimiter => ',') %></td>
+            <td class="text-center"><%= number_with_precision(malePercentage, :precision => 2) %>%</td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  </div>
+</div>

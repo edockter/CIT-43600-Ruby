@@ -17,7 +17,7 @@ class Country < ActiveRecord::Base
     currentYear = Date.current.year
     countryName = Country.find(countryId).name
 
-    queryString = "http://api.population.io:80/1.0/population/#{currentYear}/#{countryName}"
+    queryString = URI.encode("http://api.population.io:80/1.0/population/#{currentYear}/#{countryName}")
     countryDetails = HTTParty.get(queryString, format: :json)
 
     countryDetails
