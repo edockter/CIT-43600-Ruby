@@ -1,0 +1,8 @@
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @venue.name %></i>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @venue %> |
+<%= link_to 'Back', venues_path %>

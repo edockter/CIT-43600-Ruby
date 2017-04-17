@@ -1,4 +1,6 @@
-<h1>Editing User</h1>
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @user.username %></i>
+<% end %>
 
 <%= render 'form' %>
 

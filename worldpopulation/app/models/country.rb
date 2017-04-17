@@ -1,7 +1,4 @@
 class Country < ActiveRecord::Base
-  def self.AddCountry(country)
-
-  end
 
   def self.RefreshData
     response = HTTParty.get("http://api.population.io:80/1.0/countries", format: :json)

@@ -10,28 +10,42 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-lg-4 m-l-15">
+      <div class="field form-group row">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+      <div class="field form-group row">
+        <%= f.label :start_date %><br>
+        <%= f.datetime_select :start_date %>
+      </div>
+      <div class="field form-group row">
+        <%= f.label :end_date %><br>
+        <%= f.datetime_select :end_date %>
+      </div>
+      <div class="field form-group row">
+        <%= f.label :price %><br>
+        <%= f.text_field :price, :class => "form-control" %>
+      </div>
+      <div class="field form-group row">
+        <%= f.label :tickets_available %><br>
+        <%= f.number_field :tickets_available, :class => "form-control" %>
+      </div>
+      <div class="field form-group row">
+        <% if current_user.has_role? :admin %>
+        <%= f.label :venue_id %><br/>
+        <%= f.collection_select :venue_id, Venue.all.collect, :id, :name, {}, :class => "form-control" %>
+        <% end %>
+      </div>
+    </div></div>
+    <br/>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :tickets_available %><br>
-    <%= f.number_field :tickets_available %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="actions text-center">
+          <%= f.submit :class => "btn btn-lg btn-success" %>
+        </div>
+      </div>
+    </div>
+    <% end %>

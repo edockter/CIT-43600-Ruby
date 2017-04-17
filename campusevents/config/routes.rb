@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :purchases
   resources :attendees
   resources :locations
   resources :meetings

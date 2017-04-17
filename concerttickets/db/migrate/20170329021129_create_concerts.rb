@@ -6,6 +6,7 @@ class CreateConcerts < ActiveRecord::Migration
       t.datetime :end_date
       t.decimal :price
       t.integer :tickets_available
+      t.integer :venue_id
 
       t.timestamps null: false
     end

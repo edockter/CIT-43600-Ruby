@@ -5,6 +5,7 @@ class CreatePurchases < ActiveRecord::Migration
       t.decimal :payment_amount
       t.integer :user_id
       t.integer :concert_id
+      t.text :response
 
       t.timestamps null: false
     end

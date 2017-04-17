@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329021737) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20170404060453) do
 
   create_table "concerts", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170329021737) do
     t.datetime "end_date"
     t.decimal  "price"
     t.integer  "tickets_available"
+    t.integer  "venue_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -31,8 +29,20 @@ ActiveRecord::Schema.define(version: 20170329021737) do
     t.decimal  "payment_amount"
     t.integer  "user_id"
     t.integer  "concert_id"
+    t.text     "response"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +53,16 @@ ActiveRecord::Schema.define(version: 20170329021737) do
     t.string   "persistence_token"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

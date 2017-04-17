@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+  <% content_for(:pagetitle) do %>
+    <%= @user.username %> Account Details
+  <% end %>
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -11,8 +15,14 @@
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
+  <strong>User's current roles:</strong>
+    <ul>
+      <% @user.roles.each do |r| %>
+        <li>
+          <%= r.name %>
+        </li>
+      <% end %>
+    </ul>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

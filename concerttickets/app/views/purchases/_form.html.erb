@@ -12,20 +12,34 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field(:concert_id, :value => @concert.id) %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :card_number %><br>
+    <%= f.text_field :card_number, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :card_expires_on %><br>
+    <%= f.date_select :card_expires_on, :discard_day => true,
+        :start_year => Date.today.year, :end_year => Date.today.year+10,
+        :add_month_numbers => true, :class => "form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :ticket_quantity %><br>
-    <%= f.number_field :ticket_quantity %>
+    <%= f.number_field :ticket_quantity, :min => 1, :max => 9, :step => 1, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :payment_amount %><br>
-    <%= f.text_field :payment_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :concert_id %><br>
-    <%= f.number_field :concert_id %>
+    <%= f.text_field :payment_amount, :value => number_with_precision(@concert.price, :precision => 2), :readonly => true, :class => "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>

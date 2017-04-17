@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :venues
   resources :purchases
   resources :concerts
   resources :user_sessions
@@ -7,11 +8,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'concerts#index'
 
   # Login and Logout aliases
   get "login", :to => "user_sessions#new"
   get "logout", :to => "user_sessions#destroy"
+
+  get "purchases/:concert_id/new" => "purchases#new", as: :purchase_tickets
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

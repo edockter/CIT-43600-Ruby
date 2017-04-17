@@ -1,10 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for(:pagetitle) do %>
+  <%= @concert.name %>
+<% end %>
+
 <p>
   <strong>Name:</strong>
   <%= @concert.name %>
 </p>
 
+<p>
+  <strong>Venue:</strong>
+  <%= link_to @concert.venue.name, @concert.venue %>
+</p>
 <p>
   <strong>Start date:</strong>
   <%= @concert.start_date %>
@@ -17,7 +25,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @concert.price %>
+  <%= number_to_currency(@concert.price) %>
 </p>
 
 <p>
@@ -25,5 +33,21 @@
   <%= @concert.tickets_available %>
 </p>
 
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
+<div class="row">
+  <div class="col-md-4">
+    <% if current_user %>
+      <% if current_user.has_role? :admin %>
+        <%= link_to 'Edit', edit_concert_path(@concert) %>
+      <% elsif current_user.has_role? :customer %>
+        <%= link_to 'Buy Tickets', purchase_tickets_path(@concert.id), :class => "btn btn-primary" %>
+      <% else %>
+      <p><strong>You must be logged in to purchase tickets.</strong></p>
+      <% end %>
+    <% else %>
+      <p><strong>You must be logged in to purchase tickets.</strong></p>
+    <% end %>
+  </div>
+</div>
+
+
 <%= link_to 'Back', concerts_path %>

@@ -10,46 +10,38 @@
       </ul>
     </div>
   <% end %>
-    <div class="row">
-        <div class="col-lg-12 m-l-15">
-            <div class="field form-group row">
-                <div class="col-lg-5">
-                    <%= f.label :label %><br>
-                    <%= f.text_field :label, :class => "form-control" %>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 m-l-15">
-            <div class="field form-group row">
-                <div class="col-lg-5">
-                    <%= f.label :category_id %><br>
-                    <%= f.text_field :category_id, :class => "form-control" %>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 m-l-15">
-            <div class="field form-group row">
-                <div class="col-lg-5">
-                    <%= f.label :due_date %><br>
-                    <%= f.text_field :due_date, :class => "form-control" %>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 m-l-15">
-            <div class="field form-group row">
-                <div class="col-lg-5">
-                    <%= f.label :completion_date %><br>
-                    <%= f.text_field :completion_date, :class => "form-control" %>
-                </div>
-            </div>
-        </div>
-    </div>
+
+  <div class="row">
+      <div class="col-lg-4 m-l-15">
+          <div class="field form-group row">
+              <%= f.label :label %><br>
+              <%= f.text_field :label, :class => "form-control" %>
+          </div>
+          <div class="field form-group row">
+              <%= f.label :due_date %><br>
+              <%= f.text_field :due_date, :class => "form-control", 'data-provide' => 'datepicker' %>
+          </div>
+          <div class="field form-group row">
+              <%= f.label :completion_date %><br>
+              <%= f.text_field :completion_date, :class => "form-control", 'data-provide' => 'datepicker' %>
+          </div>
+          <div class="field form-group row">
+              <%= f.label :category_id %><br>
+              <% Category.all.each do |category| %>
+              <%= check_box_tag "task[category_ids][]", category.id, @task.categories.include?(category) %>
+              <%= sponsor.name %>
+              <br/>
+              <% end %>
+          </div>
+      </div>
+  </div>
+
+  <%= f.label :label %><br>
+  <%= f.text_field :label, :class => "form-control" %>
+
+  <%= f.label :category_id %><br>
+  <%= f.text_field :category_id, :class => "form-control" %>
+
     <br/>
     <div class="row">
         <div class="col-lg-3">

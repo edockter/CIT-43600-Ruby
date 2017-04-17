@@ -1,4 +1,6 @@
-<h1>Editing Concert</h1>
+<% content_for(:pagetitle) do %>
+    Editing <i><%= @concert.name %></i>
+<% end %>
 
 <%= render 'form' %>
 

@@ -11,15 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="field form-group row">
+        <%= f.label :username %><br>
+        <%= f.text_field :username, :class => "form-control" %>
+      </div>
+      <div class="field form-group row">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, :class => "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="row">
+    <div class="col-lg-1">
+      <div class="actions">
+        <%= f.submit "Login", class: "btn btn-lg btn-success" %>
+      </div>
+    </div>
   </div>
 <% end %>
